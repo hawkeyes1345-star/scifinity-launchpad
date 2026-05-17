@@ -83,9 +83,35 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      { rel: "preconnect", href: "https://www.googletagmanager.com" },
+      { rel: "dns-prefetch", href: "https://www.google-analytics.com" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" },
     ],
-  }),
+    scripts: [
+      // Google Analytics 4 — replace G-XXXXXXXXXX with your real Measurement ID (or swap with GTM-XXXXXXX block).
+      { src: "https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX", async: true },
+      {
+        children:
+          "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX',{anonymize_ip:true,send_page_view:true});",
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "EducationalOrganization",
+          name: "SCIFINITY",
+          slogan: "Where Ingenuity Meets Curiosity",
+          description:
+            "Logic-based SSC, HSC, and Admission mentorship in Bangladesh led by an EEE Engineer.",
+          areaServed: { "@type": "Country", name: "Bangladesh" },
+          address: [
+            { "@type": "PostalAddress", addressLocality: "Uttara", addressRegion: "Dhaka", addressCountry: "BD" },
+            { "@type": "PostalAddress", addressLocality: "Patuatuli", addressRegion: "Dhaka", addressCountry: "BD" },
+          ],
+          sameAs: [],
+        }),
+      },
+    ],
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
