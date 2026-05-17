@@ -65,7 +65,7 @@ function Admission() {
 
             <div className="mt-6">
               <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gold mb-3">Instant Connect</p>
-              <InstantConnectBar message="Hi SCIFINITY, I'd like to know more about admissions." />
+              <InstantConnectBar source="admission_page" message="Hi SCIFINITY, I'd like to know more about admissions." />
             </div>
 
             <p className="mt-8 text-center text-sm text-muted-foreground">
