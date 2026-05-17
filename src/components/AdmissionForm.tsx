@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { Loader2, CheckCircle2, MessageCircle, Phone, MessageSquare } from "lucide-react";
+import { Loader2, CheckCircle2 } from "lucide-react";
+import { InstantConnectBar } from "@/components/InstantConnectBar";
+import type { BranchKey } from "@/lib/contact";
 
 type FormState = {
   full_name: string;
