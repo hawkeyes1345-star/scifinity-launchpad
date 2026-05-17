@@ -61,7 +61,6 @@ function Admission() {
 
           <div className="lg:col-span-3 order-2">
             <AdmissionForm />
-          </div>
 
             {/* Instant Connection Bar */}
             <div className="mt-6 grid sm:grid-cols-3 gap-3">
