@@ -106,6 +106,13 @@ export function AdmissionForm() {
     setSubmittedBranch(form.preferred_branch === "Uttara" ? "uttara" : "patuatuli");
     setForm(initial);
     setSuccess(true);
+    trackEvent("admission_form_submit", {
+      event_category: "conversion",
+      program: form.program,
+      branch: form.preferred_branch,
+      batch: form.preferred_batch,
+      conversion: true,
+    });
     toast.success("Admission request received.");
   };
 
