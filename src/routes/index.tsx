@@ -7,7 +7,7 @@ import {
   BookOpen, FlaskConical, Calculator, Target, Eye, HeartHandshake, ChevronRight, Quote
 } from "lucide-react";
 import { useEffect, useState } from "react";
-import hero from "@/assets/hero-illustration.jpg";
+import hero from "@/assets/hero-illustration.webp";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -17,7 +17,10 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "SCIFINITY | Where Ingenuity Meets Curiosity" },
       { property: "og:description", content: "Logic-based SSC, HSC, and Admission mentorship in Bangladesh led by an EEE Engineer." },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [
+      { rel: "canonical", href: "/" },
+      { rel: "preload", as: "image", href: hero, fetchpriority: "high" } as never,
+    ],
   }),
   component: Home,
 });
@@ -89,7 +92,7 @@ function Home() {
             </div>
             <div className="relative">
               <div className="absolute -inset-4 bg-gold/20 blur-3xl rounded-full" />
-              <img src={hero} alt="Engineering education abstract illustration with formulas and circuits" width={1280} height={1280} className="relative w-full h-auto rounded-2xl shadow-2xl" />
+              <img src={hero} alt="Engineering education abstract illustration with formulas and circuits" width={1280} height={1280} fetchPriority="high" decoding="async" className="relative w-full h-auto rounded-2xl shadow-2xl" />
             </div>
           </div>
         </div>
