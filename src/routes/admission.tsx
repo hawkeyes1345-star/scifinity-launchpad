@@ -26,6 +26,29 @@ const why = [
   { icon: Activity, label: "Dedicated Performance Tracking" },
 ];
 
+const faqs = [
+  {
+    q: "Which classes and programs does SCIFINITY teach?",
+    a: "We run focused tracks for SSC (Class 9–10), HSC (Class 11–12), and University Admission (Engineering & Medical). Every track is built around concept clarity, weekly mastery checks, and personalised mentor reviews — not lecture marathons.",
+  },
+  {
+    q: "How do I choose the right batch (Dawn, Zenith, Prime, Vesper)?",
+    a: "Dawn (early morning) and Vesper (evening) suit school-college students. Zenith (mid-morning) is built for HSC repeat candidates and full-time admission seekers. Prime (afternoon) is our most popular general slot. After you submit the form, our mentor team will confirm which batch fits your routine and current level.",
+  },
+  {
+    q: "How does the Golden Seat scholarship process work?",
+    a: "The Golden Seat is a 100% scholarship awarded after a short eligibility test, an interview with the lead mentor, and a guardian conversation. You can apply directly on our scholarship page. Selected students keep the scholarship as long as they meet our monthly performance benchmark.",
+  },
+  {
+    q: "How do I pick between Uttara and Patuatuli branches?",
+    a: "Both branches follow the exact same curriculum, mentors and batch sizes. Choose the one closer to your home or college — commute time matters more than anything else for long-term consistency. You can also visit both campuses before confirming your seat.",
+  },
+  {
+    q: "What happens after I submit the admission form?",
+    a: "Within working hours, our admission team will reach out on WhatsApp or call to confirm your preferred batch and schedule a free orientation session. Seats are reserved on a first-come, first-served basis once your slot is confirmed.",
+  },
+];
+
 function Admission() {
   return (
     <SiteLayout>
