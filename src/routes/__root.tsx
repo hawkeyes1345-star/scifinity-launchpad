@@ -78,6 +78,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:site_name", content: "SCIFINITY" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "SCIFINITY | Where Ingenuity Meets Curiosity" },
+      { name: "twitter:title", content: "SCIFINITY | Where Ingenuity Meets Curiosity" },
+      { property: "og:description", content: "Logic-based SSC, HSC, and Admission mentorship in Bangladesh led by an EEE Engineer." },
+      { name: "twitter:description", content: "Logic-based SSC, HSC, and Admission mentorship in Bangladesh led by an EEE Engineer." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/90ea5501-349c-46ff-91de-e8d7436e3a26/id-preview-49db108d--76670d6a-85a6-4880-9010-c35dc8c5759b.lovable.app-1779021525663.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/90ea5501-349c-46ff-91de-e8d7436e3a26/id-preview-49db108d--76670d6a-85a6-4880-9010-c35dc8c5759b.lovable.app-1779021525663.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
