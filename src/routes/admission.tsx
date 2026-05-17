@@ -4,7 +4,7 @@ import { CTAButton } from "@/components/CTAButton";
 import { AdmissionForm } from "@/components/AdmissionForm";
 import { InstantConnectBar } from "@/components/InstantConnectBar";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Users, Cpu, Gauge, Activity, HelpCircle } from "lucide-react";
+import { Users, Cpu, Gauge, Activity, HelpCircle, ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/admission")({
   head: () => ({
