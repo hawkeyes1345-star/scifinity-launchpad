@@ -40,7 +40,7 @@ export function AdmissionForm() {
   const [submittedBranch, setSubmittedBranch] = useState<BranchKey | null>(null);
 
   // Fire a conversion-funnel event the first time the form is visible.
-  const formRef = useRef<HTMLDivElement | null>(null);
+  const formRef = useRef<HTMLElement | null>(null);
   const viewedRef = useRef(false);
   useEffect(() => {
     const node = formRef.current;
