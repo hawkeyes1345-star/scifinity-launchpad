@@ -3,7 +3,8 @@ import { SiteLayout } from "@/components/SiteLayout";
 import { CTAButton } from "@/components/CTAButton";
 import { AdmissionForm } from "@/components/AdmissionForm";
 import { InstantConnectBar } from "@/components/InstantConnectBar";
-import { Users, Cpu, Gauge, Activity } from "lucide-react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Users, Cpu, Gauge, Activity, HelpCircle } from "lucide-react";
 
 export const Route = createFileRoute("/admission")({
   head: () => ({
