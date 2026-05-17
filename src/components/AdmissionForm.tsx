@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { Loader2, CheckCircle2, MessageCircle, Phone, MessageSquare } from "lucide-react";
+import { Loader2, CheckCircle2 } from "lucide-react";
+import { InstantConnectBar } from "@/components/InstantConnectBar";
+import type { BranchKey } from "@/lib/contact";
 
 type FormState = {
   full_name: string;
@@ -34,6 +36,7 @@ export function AdmissionForm() {
   const [form, setForm] = useState<FormState>(initial);
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [submittedBranch, setSubmittedBranch] = useState<BranchKey | null>(null);
 
   const update = <K extends keyof FormState>(k: K, v: FormState[K]) =>
     setForm((p) => ({ ...p, [k]: v }));
@@ -73,6 +76,7 @@ export function AdmissionForm() {
       toast.error("Couldn't submit. Please try again or contact us on WhatsApp.");
       return;
     }
+    setSubmittedBranch(form.preferred_branch === "Uttara" ? "uttara" : "patuatuli");
     setForm(initial);
     setSuccess(true);
     toast.success("Admission request received.");
@@ -94,27 +98,11 @@ export function AdmissionForm() {
             To speed up your enrollment, please click the WhatsApp button below to message us instantly.
           </p>
 
-          <div className="mt-6 grid sm:grid-cols-3 gap-3">
-            <a
-              href="https://wa.me/8801XXXXXXXXX"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] text-white font-semibold px-4 py-4 text-sm hover:opacity-95 transition"
-            >
-              <MessageCircle className="h-5 w-5" /> Chat on WhatsApp
-            </a>
-            <a
-              href="tel:+8801XXXXXXXXX"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-navy text-white font-semibold px-4 py-4 text-sm hover:bg-navy-deep transition"
-            >
-              <Phone className="h-5 w-5" /> Direct Call
-            </a>
-            <a
-              href="sms:+8801XXXXXXXXX"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-gold-gradient text-navy font-semibold px-4 py-4 text-sm shadow-gold hover:opacity-95 transition"
-            >
-              <MessageSquare className="h-5 w-5" /> Request Call Back
-            </a>
+          <div className="mt-6 text-left">
+            <InstantConnectBar
+              only={submittedBranch ?? undefined}
+              message="Hi SCIFINITY, I just submitted my admission request. Please follow up."
+            />
           </div>
 
           <button
