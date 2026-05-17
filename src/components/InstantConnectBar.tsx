@@ -1,11 +1,14 @@
 import { MessageCircle, Phone, MessageSquare, MapPin } from "lucide-react";
 import { BRANCH_LIST, waLink, telLink, smsLink, type Branch } from "@/lib/contact";
+import { trackEvent } from "@/lib/analytics";
 
 type Props = {
   /** Optional pre-filled message body for WhatsApp/SMS */
   message?: string;
   /** Show only one branch (defaults to all) */
   only?: Branch["key"];
+  /** Page/section label sent with analytics events */
+  source?: string;
   className?: string;
 };
 
