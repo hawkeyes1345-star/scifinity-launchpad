@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Loader2, CheckCircle2 } from "lucide-react";
 import { InstantConnectBar } from "@/components/InstantConnectBar";
 import type { BranchKey } from "@/lib/contact";
+import { trackEvent } from "@/lib/analytics";
 
 type FormState = {
   full_name: string;
@@ -37,6 +38,32 @@ export function AdmissionForm() {
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [submittedBranch, setSubmittedBranch] = useState<BranchKey | null>(null);
+
+  // Fire a conversion-funnel event the first time the form is visible.
+  const formRef = useRef<HTMLElement | null>(null);
+  const viewedRef = useRef(false);
+  useEffect(() => {
+    const node = formRef.current;
+    if (!node || viewedRef.current || typeof IntersectionObserver === "undefined") return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting && !viewedRef.current) {
+            viewedRef.current = true;
+            trackEvent("admission_form_view", {
+              event_category: "engagement",
+              source: "admission_page",
+              conversion: true,
+            });
+            io.disconnect();
+          }
+        }
+      },
+      { threshold: 0.35 },
+    );
+    io.observe(node);
+    return () => io.disconnect();
+  }, []);
 
   const update = <K extends keyof FormState>(k: K, v: FormState[K]) =>
     setForm((p) => ({ ...p, [k]: v }));
@@ -79,6 +106,13 @@ export function AdmissionForm() {
     setSubmittedBranch(form.preferred_branch === "Uttara" ? "uttara" : "patuatuli");
     setForm(initial);
     setSuccess(true);
+    trackEvent("admission_form_submit", {
+      event_category: "conversion",
+      program: form.program,
+      branch: form.preferred_branch,
+      batch: form.preferred_batch,
+      conversion: true,
+    });
     toast.success("Admission request received.");
   };
 
@@ -100,6 +134,7 @@ export function AdmissionForm() {
 
           <div className="mt-6 text-left">
             <InstantConnectBar
+              source="admission_success"
               only={submittedBranch ?? undefined}
               message="Hi SCIFINITY, I just submitted my admission request. Please follow up."
             />
@@ -118,7 +153,7 @@ export function AdmissionForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="rounded-3xl bg-white border border-border shadow-card overflow-hidden">
+    <form ref={formRef as React.RefObject<HTMLFormElement>} onSubmit={onSubmit} className="rounded-3xl bg-white border border-border shadow-card overflow-hidden">
       <div className="bg-navy text-white px-6 py-5">
         <h3 className="font-display font-semibold">Admission Form</h3>
         <p className="text-xs text-white/70 mt-1">All information is kept strictly confidential.</p>
