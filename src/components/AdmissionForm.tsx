@@ -76,6 +76,7 @@ export function AdmissionForm() {
       toast.error("Couldn't submit. Please try again or contact us on WhatsApp.");
       return;
     }
+    setSubmittedBranch(form.preferred_branch === "Uttara" ? "uttara" : "patuatuli");
     setForm(initial);
     setSuccess(true);
     toast.success("Admission request received.");
