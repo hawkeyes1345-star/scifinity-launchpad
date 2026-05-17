@@ -64,30 +64,55 @@ function Admission() {
                 <FileText className="h-5 w-5 text-gold" />
                 <h3 className="font-display font-semibold">Admission Form</h3>
               </div>
-              <div className="p-6 sm:p-10">
-                <div className="rounded-2xl border-2 border-dashed border-border bg-secondary/30 p-8 sm:p-12 text-center">
-                  <FileText className="h-12 w-12 mx-auto mb-4 text-navy/40" />
-                  <p className="font-display font-semibold text-navy text-lg">Google Form Embed Placeholder</p>
-                  <p className="mt-2 text-sm text-muted-foreground">Replace with final SCIFINITY admission form link.</p>
-                  <div className="mt-6 text-left max-w-md mx-auto bg-white border border-border rounded-xl p-5 text-sm">
-                    <p className="font-semibold text-navy mb-3">Form will collect:</p>
-                    <ul className="space-y-1.5 text-foreground/80">
-                      {[
-                        "Full Name",
-                        "Current Class/Program: SSC / HSC / Admission",
-                        "Target Subjects",
-                        "Phone Number",
-                        "Preferred Branch: Uttara / Patuatuli",
-                        "Preferred Batch: Dawn / Zenith / Prime / Vesper",
-                      ].map((f) => (
-                        <li key={f} className="flex items-start gap-2"><CheckCircle2 className="h-4 w-4 text-green-brand mt-0.5 shrink-0" /> {f}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <button className="mt-6 inline-flex items-center justify-center rounded-lg bg-gold-gradient text-navy font-semibold px-7 py-3 text-sm shadow-gold opacity-80 cursor-not-allowed" disabled>
-                    Submit (placeholder)
-                  </button>
+              <div className="p-4 sm:p-6">
+                <div className="mb-5 rounded-xl bg-secondary/50 border border-border p-4 sm:p-5 text-sm">
+                  <p className="font-semibold text-navy mb-2">Please be ready to share:</p>
+                  <ul className="grid sm:grid-cols-2 gap-x-4 gap-y-1.5 text-foreground/80">
+                    {[
+                      "Full Name",
+                      "Current Class/Program: SSC / HSC / Admission",
+                      "Target Subjects",
+                      "Phone Number",
+                      "Preferred Branch: Uttara / Patuatuli",
+                      "Preferred Batch: Dawn / Zenith / Prime / Vesper",
+                    ].map((f) => (
+                      <li key={f} className="flex items-start gap-2"><CheckCircle2 className="h-4 w-4 text-green-brand mt-0.5 shrink-0" /> <span>{f}</span></li>
+                    ))}
+                  </ul>
                 </div>
+
+                {/* ============================================================
+                    GOOGLE FORM EMBED
+                    Replace GOOGLE_FORM_EMBED_URL below with your form's embed link
+                    (Google Forms → Send → < > Embed HTML → copy the src URL).
+                   ============================================================ */}
+                {(() => {
+                  const GOOGLE_FORM_EMBED_URL = ""; // e.g. "https://docs.google.com/forms/d/e/XXXX/viewform?embedded=true"
+                  return GOOGLE_FORM_EMBED_URL ? (
+                    <div className="rounded-2xl overflow-hidden border border-border bg-white">
+                      <iframe
+                        src={GOOGLE_FORM_EMBED_URL}
+                        title="SCIFINITY Admission Form"
+                        width="100%"
+                        height="900"
+                        className="w-full block"
+                        loading="lazy"
+                      >
+                        Loading…
+                      </iframe>
+                    </div>
+                  ) : (
+                    <div className="rounded-2xl border-2 border-dashed border-border bg-secondary/30 p-8 sm:p-12 text-center min-h-[420px] flex flex-col items-center justify-center">
+                      <FileText className="h-12 w-12 mx-auto mb-4 text-navy/40" />
+                      <p className="font-display font-semibold text-navy text-lg">Google Form Embed Area</p>
+                      <p className="mt-2 text-sm text-muted-foreground max-w-sm">
+                        Paste your final Google Form embed URL into{" "}
+                        <code className="px-1.5 py-0.5 rounded bg-white border border-border text-navy text-xs">GOOGLE_FORM_EMBED_URL</code>{" "}
+                        in <code className="px-1.5 py-0.5 rounded bg-white border border-border text-navy text-xs">src/routes/admission.tsx</code> to render it here.
+                      </p>
+                    </div>
+                  );
+                })()}
               </div>
             </div>
 
