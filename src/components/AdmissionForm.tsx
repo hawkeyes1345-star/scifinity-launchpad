@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Loader2, CheckCircle2 } from "lucide-react";
 import { InstantConnectBar } from "@/components/InstantConnectBar";
 import type { BranchKey } from "@/lib/contact";
+import { trackEvent } from "@/lib/analytics";
 
 type FormState = {
   full_name: string;
