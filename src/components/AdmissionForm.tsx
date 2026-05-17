@@ -145,7 +145,7 @@ export function AdmissionForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="rounded-3xl bg-white border border-border shadow-card overflow-hidden">
+    <form ref={formRef as React.RefObject<HTMLFormElement>} onSubmit={onSubmit} className="rounded-3xl bg-white border border-border shadow-card overflow-hidden">
       <div className="bg-navy text-white px-6 py-5">
         <h3 className="font-display font-semibold">Admission Form</h3>
         <p className="text-xs text-white/70 mt-1">All information is kept strictly confidential.</p>
