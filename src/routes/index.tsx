@@ -7,7 +7,7 @@ import {
   BookOpen, FlaskConical, Calculator, Target, Eye, HeartHandshake, ChevronRight, Quote
 } from "lucide-react";
 import { useEffect, useState } from "react";
-import hero from "@/assets/hero-illustration.jpg";
+import hero from "@/assets/hero-illustration.webp";
 
 export const Route = createFileRoute("/")({
   head: () => ({
