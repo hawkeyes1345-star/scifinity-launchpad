@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { CTAButton } from "@/components/CTAButton";
-import { CheckCircle2, Users, Cpu, Gauge, Activity, MessageCircle, Phone, MessageSquare, FileText } from "lucide-react";
+import { AdmissionForm } from "@/components/AdmissionForm";
+import { Users, Cpu, Gauge, Activity, MessageCircle, Phone, MessageSquare } from "lucide-react";
 
 export const Route = createFileRoute("/admission")({
   head: () => ({
