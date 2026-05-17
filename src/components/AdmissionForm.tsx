@@ -134,6 +134,7 @@ export function AdmissionForm() {
 
           <div className="mt-6 text-left">
             <InstantConnectBar
+              source="admission_success"
               only={submittedBranch ?? undefined}
               message="Hi SCIFINITY, I just submitted my admission request. Please follow up."
             />
