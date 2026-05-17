@@ -92,7 +92,7 @@ function Home() {
             </div>
             <div className="relative">
               <div className="absolute -inset-4 bg-gold/20 blur-3xl rounded-full" />
-              <img src={hero} alt="Engineering education abstract illustration with formulas and circuits" width={1280} height={1280} className="relative w-full h-auto rounded-2xl shadow-2xl" />
+              <img src={hero} alt="Engineering education abstract illustration with formulas and circuits" width={1280} height={1280} fetchPriority="high" decoding="async" className="relative w-full h-auto rounded-2xl shadow-2xl" />
             </div>
           </div>
         </div>
