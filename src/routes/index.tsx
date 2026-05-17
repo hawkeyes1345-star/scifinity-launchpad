@@ -17,7 +17,10 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "SCIFINITY | Where Ingenuity Meets Curiosity" },
       { property: "og:description", content: "Logic-based SSC, HSC, and Admission mentorship in Bangladesh led by an EEE Engineer." },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [
+      { rel: "canonical", href: "/" },
+      { rel: "preload", as: "image", href: hero, fetchpriority: "high" } as never,
+    ],
   }),
   component: Home,
 });
