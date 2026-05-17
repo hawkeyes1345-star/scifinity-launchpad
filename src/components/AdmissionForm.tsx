@@ -36,6 +36,7 @@ export function AdmissionForm() {
   const [form, setForm] = useState<FormState>(initial);
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [submittedBranch, setSubmittedBranch] = useState<BranchKey | null>(null);
 
   const update = <K extends keyof FormState>(k: K, v: FormState[K]) =>
     setForm((p) => ({ ...p, [k]: v }));
