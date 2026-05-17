@@ -39,6 +39,32 @@ export function AdmissionForm() {
   const [success, setSuccess] = useState(false);
   const [submittedBranch, setSubmittedBranch] = useState<BranchKey | null>(null);
 
+  // Fire a conversion-funnel event the first time the form is visible.
+  const formRef = useRef<HTMLDivElement | null>(null);
+  const viewedRef = useRef(false);
+  useEffect(() => {
+    const node = formRef.current;
+    if (!node || viewedRef.current || typeof IntersectionObserver === "undefined") return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting && !viewedRef.current) {
+            viewedRef.current = true;
+            trackEvent("admission_form_view", {
+              event_category: "engagement",
+              source: "admission_page",
+              conversion: true,
+            });
+            io.disconnect();
+          }
+        }
+      },
+      { threshold: 0.35 },
+    );
+    io.observe(node);
+    return () => io.disconnect();
+  }, []);
+
   const update = <K extends keyof FormState>(k: K, v: FormState[K]) =>
     setForm((p) => ({ ...p, [k]: v }));
 
