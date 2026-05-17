@@ -84,7 +84,7 @@ function Admission() {
             </div>
           </div>
 
-          <div className="lg:col-span-3 order-2">
+          <div id="admission-form" className="lg:col-span-3 order-2 scroll-mt-24">
             <AdmissionForm />
 
             <div className="mt-6">
