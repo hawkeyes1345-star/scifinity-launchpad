@@ -14,7 +14,48 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      admission_requests: {
+        Row: {
+          created_at: string
+          full_name: string
+          guardian_phone: string | null
+          id: string
+          message: string | null
+          phone: string
+          preferred_batch: string
+          preferred_branch: string
+          program: string
+          status: string
+          target_subjects: string | null
+        }
+        Insert: {
+          created_at?: string
+          full_name: string
+          guardian_phone?: string | null
+          id?: string
+          message?: string | null
+          phone: string
+          preferred_batch: string
+          preferred_branch: string
+          program: string
+          status?: string
+          target_subjects?: string | null
+        }
+        Update: {
+          created_at?: string
+          full_name?: string
+          guardian_phone?: string | null
+          id?: string
+          message?: string | null
+          phone?: string
+          preferred_batch?: string
+          preferred_branch?: string
+          program?: string
+          status?: string
+          target_subjects?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
