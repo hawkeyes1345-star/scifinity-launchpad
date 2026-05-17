@@ -99,6 +99,34 @@ function Admission() {
           </div>
         </div>
 
+        {/* Admission FAQ */}
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 mt-20">
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase text-gold mb-3">
+              <HelpCircle className="h-4 w-4" /> Before You Submit
+            </div>
+            <h2 className="font-display text-3xl lg:text-4xl font-bold text-navy">Admission FAQ</h2>
+            <p className="mt-3 text-muted-foreground">Quick answers to the most common questions from students and guardians.</p>
+          </div>
+
+          <Accordion type="single" collapsible className="rounded-2xl bg-white border border-border shadow-card divide-y divide-border overflow-hidden">
+            {faqs.map((item, i) => (
+              <AccordionItem key={i} value={`item-${i}`} className="border-0 px-5 sm:px-6">
+                <AccordionTrigger className="text-left font-display font-semibold text-navy hover:no-underline py-5">
+                  {item.q}
+                </AccordionTrigger>
+                <AccordionContent className="text-foreground/80 leading-relaxed pb-5">
+                  {item.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+
+          <p className="mt-6 text-center text-sm text-muted-foreground">
+            Still unsure? <Link to="/programs" className="font-semibold text-gold hover:text-navy">Explore the programs</Link> or message us on WhatsApp above.
+          </p>
+        </div>
+
         <div className="mx-auto max-w-3xl px-4 mt-16 text-center">
           <CTAButton to="/programs" variant="outline">Explore Programs First</CTAButton>
         </div>
