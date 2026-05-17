@@ -63,17 +63,9 @@ function Admission() {
           <div className="lg:col-span-3 order-2">
             <AdmissionForm />
 
-            {/* Instant Connection Bar */}
-            <div className="mt-6 grid sm:grid-cols-3 gap-3">
-              <a href="https://wa.me/8801XXXXXXXXX" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] text-white font-semibold px-4 py-4 text-sm hover:opacity-95 transition">
-                <MessageCircle className="h-5 w-5" /> Chat on WhatsApp
-              </a>
-              <a href="tel:+8801XXXXXXXXX" className="inline-flex items-center justify-center gap-2 rounded-xl bg-navy text-white font-semibold px-4 py-4 text-sm hover:bg-navy-deep transition">
-                <Phone className="h-5 w-5" /> Direct Call
-              </a>
-              <a href="sms:+8801XXXXXXXXX" className="inline-flex items-center justify-center gap-2 rounded-xl bg-gold-gradient text-navy font-semibold px-4 py-4 text-sm shadow-gold hover:opacity-95 transition">
-                <MessageSquare className="h-5 w-5" /> Request Call Back
-              </a>
+            <div className="mt-6">
+              <p className="text-xs font-semibold tracking-[0.2em] uppercase text-gold mb-3">Instant Connect</p>
+              <InstantConnectBar message="Hi SCIFINITY, I'd like to know more about admissions." />
             </div>
 
             <p className="mt-8 text-center text-sm text-muted-foreground">
